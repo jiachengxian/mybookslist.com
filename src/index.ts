@@ -1,5 +1,5 @@
 const assert = require('assert');
-const client = require('./setup_Connection.ts');
+const client = require('./components/setup_Connection.ts');
 
 const static_DB_name = 'Static_Data';
 const book_collection_name = 'Books';
