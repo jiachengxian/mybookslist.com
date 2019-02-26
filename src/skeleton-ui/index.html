@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>UI #1</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="book.js"></script>
+</head>
+
+<body>
+  <div id="container-fluid">
+  
+    <div class="row">
+      <div class="col-md-12" id="header">
+        <h2>My Reading List</h2>
+      </div>
+    </div>
+    <div id="content-page">
+      <div class="row my-4" id="content-row">
+        <div class="col dummy"></div>      
+        <div class="col-md-8">
+          <div class="row" id="basic-info-row">
+            <div class="col">
+              <div id="pic">
+                <img src="testImage.jpg"/>
+              </div>
+            </div>
+            
+            <div class="col">
+              <div id="text">
+                <h1 id="title">Madness and Civilization</h1>
+                <div id="author">by: <a href="author.html">Michel Foucault</a></div>
+                <a id="more-details" class="details-button" onClick="showDetails()" href="#">More details...</a>
+                <div id="details">
+                  <div id="isbn">ISBN</div>
+                  <div id="publisher">Publisher</div>
+                  <div id="language">Language</div>
+                  <div id="release">Release Date</div>
+                </div>
+                <a id="less-details" class="details-button" onClick="showDetails()" href="#">Less details...</a>
+              </div> 
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row my-3" id="description-row">           
+            <div id="description">Madness and Civilization: A History of Insanity in the Age of Reason (French: Folie et Déraison: Histoire de la folie à l'âge classique) is a 1964 abridged edition of a 1961 book by the French philosopher Michel Foucault. An English translation of the complete 1961 edition, titled History of Madness, was published in June 2006.[1]
+
+Foucault's first major book, Madness and Civilization is an examination of the evolving meaning of madness in European culture, law, politics, philosophy and medicine from the Middle Ages to the end of the eighteenth century, and a critique of historical method and the idea of history. It marks a turning in Foucault's thought away from phenomenology toward structuralism: though he uses the language of phenomenology to describe an evolving experience of the mad as "the other", he attributes this evolution to the influence of specific powerful social structures.[2]</div>
+          </div>
+        </div>
+        <div class="col dummy"></div>      
+      </div>
+    </div>
+  </div>
+  <script type="text/babel">
+
+  </script>
+</body>
+
+</html>

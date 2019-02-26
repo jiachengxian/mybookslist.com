@@ -1,0 +1,51 @@
+body, html, .container-fluid {
+  height: 100%;
+}
+
+* {
+  font-family:'Poppins';
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;  
+}
+
+#pic{
+  height:300px;
+  width:200px;
+  display: block;
+  margin: 0 auto;  
+}
+
+#text{
+  float:left;
+}
+
+#header{
+  text-align: center;
+  background-color: #1F538E;
+  color: #FFFFFF;
+}
+
+#titlecontainer{
+  text-align: center;
+}
+
+#details{
+  display:none;
+}
+
+#less-details{
+  display:none;
+}
+
+.details-button{
+  color: black !important;
+  font-size: 12px;
+}
+
+hr{
+  border-top: 1px solid black !important;
+}
