@@ -1,31 +1,31 @@
 const express = require('express');
-const assert = require('assert');
+const body_parser = require('body-parser');
 const client = require('./components/connection/setup_mongo_client');
 const app = express();
 const PORT = 3000;
+const router = express.Router();
 
-var db;
+//apply body parser to app
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //connect to database
 client.connect()
-.then(()=>{
+.then((database)=>{
     console.log('Successfully connected to MongoDB...');
     app.listen(PORT);
     console.log(`Listening on port ${PORT}`);
-    db = client.db('Static_Data');
+    app.use('/',router);
+    require('./routes/main_page')(router,database);
 })
 .catch(console.error);
 
-
-//basic router for '/' page - TODO: move all route code to /routes
-app.get('/', function(res,req){
-    db.collection("Books").find({"Title":{$exists:true}},function(err,docs){
-        assert.equal(err,null);
-        assert.notEqual(docs.length,0);
-
-        //for each book do x
-        docs.forEach(function(doc){
-            console.log(doc);
-        });
-    });
-});
+/*  Reference code for db connection
+        db.db(STATIC_DB_NAME).collection(BOOK_COLLECTION_NAME).find({"Title":{$exists:true}}).toArray()
+        .then((docs)=>{
+            //for each book do x
+            docs.forEach(function(doc){
+                console.log(doc);
+            });
+        })
+        .catch(console.error);*/
