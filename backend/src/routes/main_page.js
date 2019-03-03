@@ -8,7 +8,7 @@ module.exports = function handle_main_page_routes(router,db){
         .then((docs)=>{
             //for each book do x
             docs.forEach(function(doc){
-                console.log(doc);
+                //console.log(doc);
                 res.json(doc);
             });
         })
