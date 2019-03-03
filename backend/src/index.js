@@ -1,13 +1,17 @@
 const express = require('express');
 const body_parser = require('body-parser');
+const cors = require('cors');
 const client = require('./components/connection/setup_mongo_client');
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 const router = express.Router();
 
 //apply body parser to app
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(body_parser.urlencoded({ extended: false }));
+app.use(body_parser.json());
+
+//set permissions
+app.use(cors({origin:"http://localhost:3000"}));
 
 //connect to database
 client.connect()
@@ -19,13 +23,3 @@ client.connect()
     require('./routes/main_page')(router,database);
 })
 .catch(console.error);
-
-/*  Reference code for db connection
-        db.db(STATIC_DB_NAME).collection(BOOK_COLLECTION_NAME).find({"Title":{$exists:true}}).toArray()
-        .then((docs)=>{
-            //for each book do x
-            docs.forEach(function(doc){
-                console.log(doc);
-            });
-        })
-        .catch(console.error);*/
