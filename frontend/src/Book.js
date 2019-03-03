@@ -44,7 +44,7 @@ class Book extends Component{
     componentDidMount(){
         axios.get('http://localhost:8000/get_book_json/default')
         .then(response=>{
-            console.log(response.data);
+            //console.log(response.data);
             this.setState({book_data:response.data});
         })
         .catch(console.error);
