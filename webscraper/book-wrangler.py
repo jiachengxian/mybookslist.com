@@ -39,10 +39,12 @@ def parseGoodReadsPage(url):
   authors = []
   for author in bs.find_all("a",{"class":"authorName"}):
     authors.append(author.text)
-  description = ""
+  description = bs.find("div",{"id":"description"}).find("span",{"style":"display:none"}).text
   isbns = ""
   publisher = ""
-  tags = ""
+  tags = []
+  for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
+    tags.append(tag.text)
   imgLink = bs.find("img",{"id":"coverImage"})['src']
   return Book(title, authors, description, isbns, publisher, tags,imgLink).asDict()
 
@@ -59,6 +61,7 @@ def getRelatedBooks(url):
 
 testURL = "https://www.goodreads.com/book/show/136251.Harry_Potter_and_the_Deathly_Hallows"
 #print(getRelatedBooks(testURL))
+#print(parseGoodReadsPage(testURL))
 
 
 ###################################################BOOK COLLECTION FUNCTIONS #############################################################
@@ -128,3 +131,4 @@ def popUrlFromCollection(foundUrlsCollection):
 foundUrlsCollection = connectToFoundUrlsCollection()
 print(popUrlFromCollection(foundUrlsCollection))
 '''
+
