@@ -30,8 +30,18 @@ class Book:
     }
  
 def getPage(url):
-  req = requests.get(url)
-  return BeautifulSoup(req.text, 'html.parser')
+  try:
+    req = requests.get(url)
+    req.raise_for_status()
+    return BeautifulSoup(req.text, 'html.parser')
+  except requests.exceptions.HTTPError as errh:
+    print ("Http Error:",errh)
+  except requests.exceptions.ConnectionError as errc:
+    print ("Error Connecting:",errc)
+  except requests.exceptions.Timeout as errt:
+    print ("Timeout Error:",errt)
+  except requests.exceptions.RequestException as err:
+    print ("!!!:Something Else",err)
 
 def parseGoodReadsPage(url):
   bs = getPage(url)
