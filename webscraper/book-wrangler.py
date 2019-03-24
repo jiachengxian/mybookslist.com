@@ -50,8 +50,8 @@ def parseGoodReadsPage(url):
   for author in bs.find_all("a",{"class":"authorName"}):
     authors.append(author.text)
   description = bs.find("div",{"id":"description"}).find("span",{"style":"display:none"}).text
-  isbns = ""
-  publisher = ""
+  isbns = bs.find("span",{"itemprop":"isbn"}).text.strip()
+  publisher = bs.find("div",{"id":"details"}).find_all("div",{"class":"row"})[1].text.strip().split("by")[1].strip()
   tags = []
   for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
     tags.append(tag.text)
@@ -142,3 +142,4 @@ foundUrlsCollection = connectToFoundUrlsCollection()
 print(popUrlFromCollection(foundUrlsCollection))
 '''
 
+print(parseGoodReadsPage(testURL))
