@@ -1,8 +1,6 @@
 import pymongo
 import dns
 
-################################################### BOOK COLLECTION FUNCTIONS #############################################################
-
 #get connection to Books collection
 def connectToStaticDB():
   client = pymongo.MongoClient("mongodb+srv://admin:admin@cluster0-ieve0.mongodb.net/test?retryWrites=true")
@@ -39,8 +37,6 @@ print(isFound)
 '''
 
 
-
-################################################FOUND-URL COLLECTION FUNCTIONS#############################################################
 
 #get connection to Found-URLs collection
 def connectToFoundUrlsCollection():

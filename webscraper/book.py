@@ -3,14 +3,17 @@ from bs4 import BeautifulSoup
 import re
 
 class Book:
-  def __init__(self, title, authors, description, isbns, publisher, tags, imgLink):
+  def __init__(self, title, authors, description, isbns, publishDate, publisher, tags, imgLink, series, pages):
     self.title = title
     self.authors = authors
     self.description = description
     self.isbns = isbns
+    self.publishDate = publishDate
     self.publisher = publisher
     self.tags = tags
     self.imgLink = imgLink
+    self.series = series
+    self.pages = pages
 
   def __str__(self):
     attributes = vars(self)
@@ -22,9 +25,12 @@ class Book:
       'Author':self.authors,
       'Description':self.description,
       'ISBN':self.isbns,
+      'Publish Date':self.publishDate,
       'Publisher':self.publisher,
       'Tags':self.tags,
-      'Image_Link':self.imgLink
+      'Image_Link':self.imgLink,
+      'Series':self.series,
+      'Pages':self.pages
     }
  
 def getPage(url):
@@ -49,12 +55,16 @@ def parseGoodReadsPage(url):
     authors.append(author.text)
   description = bs.find("div",{"id":"description"}).find("span",{"style":"display:none"}).text
   isbns = bs.find("span",{"itemprop":"isbn"}).text.strip()
-  publisher = bs.find("div",{"id":"details"}).find_all("div",{"class":"row"})[1].text.strip().split("by")[1].strip()
+  publishInfo = processPublishInfo(bs.find("div",{"id":"details"}).find_all("div",{"class":"row"})[1].text.strip())
+  publishDate = publishInfo[0]
+  publisher = publishInfo[1]
   tags = []
   for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
     tags.append(tag.text)
   imgLink = bs.find("img",{"id":"coverImage"})['src']
-  return Book(title, authors, description, isbns, publisher, tags,imgLink).asDict()
+  series = bs.find("h2",{"id":"bookSeries"}).text.strip()[0:-4]
+  pages = bs.find("span",{"itemprop":"numberOfPages"}).text.strip()
+  return Book(title, authors, description, isbns, publishDate, publisher, tags, imgLink, series, pages).asDict()
 
 #get list of related books in mongodb friendly dict-format
 def getRelatedBooks(url):
@@ -65,3 +75,18 @@ def getRelatedBooks(url):
       listOfUrls.append({'URL':link['href']})
       #print(link['href'])
   return listOfUrls
+
+def stripEmptySpaceBetweenCharacters(str):
+  res = ""
+  for char in str:
+    if char != '\n' and char != '\t':
+      res = res + char
+  return res
+
+def processPublishInfo(str):
+  arr = str.split("by")
+  publishDate = arr[0].split("Published")[1].strip()
+  publisher = arr[1].strip()
+  if '\n' in publisher:
+    publisher = publisher.split('\n')[0]
+  return [publishDate, publisher]
