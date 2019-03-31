@@ -26,7 +26,6 @@ insertIntoBookCollection(bookCollection,newEntry)
 def bookAlreadyFound(bookCollection,titleToCheck,authorToCheck):
   query = {"Title":titleToCheck, "Author":authorToCheck}
   result = bookCollection.find_one(query)
-  print(result)
   return False if (result == None) else True
 #test if found harry potter and deathly hallows
 '''
@@ -67,3 +66,8 @@ def popUrlFromCollection(foundUrlsCollection):
 foundUrlsCollection = connectToFoundUrlsCollection()
 print(popUrlFromCollection(foundUrlsCollection))
 '''
+
+#check if url collection is empty
+def urlCollectionIsEmpty(foundUrlsCollection):
+  res = foundUrlsCollection.find_one()
+  return True if (res == None) else False

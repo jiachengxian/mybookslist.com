@@ -49,31 +49,70 @@ def getPage(url):
 
 def parseGoodReadsPage(url):
   bs = getPage(url)
+  #title
   title = bs.find("h1",{"id":"bookTitle"}).text.strip()
+  
+  #authors
   authors = []
   for author in bs.find_all("a",{"class":"authorName"}):
     authors.append(author.text)
-  description = bs.find("div",{"id":"description"}).find("span",{"style":"display:none"}).text
-  isbns = bs.find("span",{"itemprop":"isbn"}).text.strip()
-  publishInfo = processPublishInfo(bs.find("div",{"id":"details"}).find_all("div",{"class":"row"})[1].text.strip())
-  publishDate = publishInfo[0]
-  publisher = publishInfo[1]
-  tags = []
-  for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
-    tags.append(tag.text)
-  imgLink = bs.find("img",{"id":"coverImage"})['src']
-  series = bs.find("h2",{"id":"bookSeries"}).text.strip()[0:-4]
-  pages = bs.find("span",{"itemprop":"numberOfPages"}).text.strip()
-  return Book(title, authors, description, isbns, publishDate, publisher, tags, imgLink, series, pages).asDict()
+  
+  #description
+  description = ""
+  try:
+    description = bs.find("div",{"id":"description"}).find("span",{"style":"display:none"}).text
+  except:
+    description = bs.find("div",{"id":"description"}).find("span",{}).text
+  
+  #ISBN
+  isbn = ""
+  try:
+    isbn = bs.find("span",{"itemprop":"isbn"}).text.strip()
+  except:
+    print(f"ISBN tag was not found for [{title}]")
+
+  #Publish Info
+  publishInfo = ""
+  publishDate = ""
+  try:
+    publishInfo = processPublishInfo(bs.find("div",{"id":"details"}).find_all("div",{"class":"row"})[1].text.strip())
+    publishDate = publishInfo[0]
+    publisher = publishInfo[1]
+    tags = []
+    for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
+      tags.append(tag.text)
+  except:
+    print(f"Publish info tag was not found for [{title}]")
+
+  #Image Link
+  imgLink = ""
+  try:
+    imgLink = bs.find("img",{"id":"coverImage"})['src']
+  except:
+    print(f"Image link was not found for [{title}]")
+
+  #Series
+  series = ""
+  try:
+    series = bs.find("h2",{"id":"bookSeries"}).text.strip()[1:-4]
+  except:
+    print(f"Series tag was not found for [{title}]")
+
+  #Pages
+  pages = ""
+  try:
+    pages = bs.find("span",{"itemprop":"numberOfPages"}).text.strip()
+  except:
+    print(f"Page number tag was not found for [{title}]")
+  return Book(title, authors, description, isbn, publishDate, publisher, tags, imgLink, series, pages).asDict()
 
 #get list of related books in mongodb friendly dict-format
 def getRelatedBooks(url):
   listOfUrls = []
   bs = getPage(url)
-  for carousel in bs.find_all("div",{"class":"bookCarousel"}):#.find_all('a', href=re.compile('^(https://www.goodreads.com/book/show/)')):
+  for carousel in bs.find_all("div",{"class":"bookCarousel"}):
     for link in carousel.find_all('a', href=re.compile('^(https://www.goodreads.com/book/show/)')):
       listOfUrls.append({'URL':link['href']})
-      #print(link['href'])
   return listOfUrls
 
 def stripEmptySpaceBetweenCharacters(str):
