@@ -29,7 +29,7 @@ def mainLoop(bookCol, urlCol):
             relatedUrls = Book.getRelatedBooks(url)
             Collection.insertIntoFoundUrlsCollection(urlCol,relatedUrls)
             print('Successfully added related URLs!')
-        time.sleep(10)
+        time.sleep(5)
 
 
 bookCol = Collection.connectToBookCollection()

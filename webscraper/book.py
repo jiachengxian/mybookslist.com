@@ -72,18 +72,23 @@ def parseGoodReadsPage(url):
     print(f"ISBN tag was not found for [{title}]")
 
   #Publish Info
-  publishInfo = ""
   publishDate = ""
+  publisher = ""
   try:
     publishInfo = processPublishInfo(bs.find("div",{"id":"details"}).find_all("div",{"class":"row"})[1].text.strip())
     publishDate = publishInfo[0]
     publisher = publishInfo[1]
-    tags = []
-    for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
-      tags.append(tag.text)
   except:
     print(f"Publish info tag was not found for [{title}]")
 
+  #Tags
+  tags = []
+  try:
+    for tag in bs.find_all("a",{"class":"actionLinkLite bookPageGenreLink"}):
+      tags.append(tag.text)
+  except:
+    print(f"Tags tag was not found for [{title}]")
+  
   #Image Link
   imgLink = ""
   try:
@@ -98,12 +103,13 @@ def parseGoodReadsPage(url):
   except:
     print(f"Series tag was not found for [{title}]")
 
-  #Pages
+  #Number of Pages
   pages = ""
   try:
     pages = bs.find("span",{"itemprop":"numberOfPages"}).text.strip()
   except:
     print(f"Page number tag was not found for [{title}]")
+  
   return Book(title, authors, description, isbn, publishDate, publisher, tags, imgLink, series, pages).asDict()
 
 #get list of related books in mongodb friendly dict-format
