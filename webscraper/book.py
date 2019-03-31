@@ -60,9 +60,15 @@ def parseGoodReadsPage(url):
   #description
   description = ""
   try:
-    description = bs.find("div",{"id":"description"}).find("span",{"style":"display:none"}).text
+    descriptionDiv = bs.find("div",{"id":"description"})
+    if descriptionDiv != None:
+      description = descriptionDiv.find("span",{"style":"display:none"})
+      if description != None:
+        description = description.text
+      else:
+        description = bs.find("div",{"id":"description"}).find("span",{}).text
   except:
-    description = bs.find("div",{"id":"description"}).find("span",{}).text
+    print(f"Unexpected error while scraping description for [{title}]")
   
   #ISBN
   isbn = ""
