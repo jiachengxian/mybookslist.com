@@ -2,3 +2,6 @@
     color: black !important;
     font-size: 12px;
 }
+.author_container{
+    display:inline;
+}
