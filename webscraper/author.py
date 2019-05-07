@@ -54,28 +54,28 @@ def parseGoodReadsPage(url):
       else:
         description = bs.find("div",{"id":"description"}).find("span",{}).text
   except:
-    print(f"Unexpected error while scraping description for [{title}]")
+    print(f"Unexpected error while scraping description for [{name}]")
   
   #birthdate
   birthDate = ""
   try:
     birthDate = bs.find("div",{"itemprop":"birthDate"}).text.strip()
   except:
-    print(f"birthDate tag was not found for [{title}]")
+    print(f"birthDate tag was not found for [{name}]")
 
   #deathdate
   deathDate = ""
   try:
     deathDate = bs.find("div",{"itemprop":"deathDate"}).text.strip()
   except:
-    print(f"Death  tag was not found for [{title}]")
+    print(f"Death tag was not found for [{name}]")
 
   #ImageLink
   imgLink = ""
   try:
     imgLink =  imgLink = bs.find("img",{"itemprop":"image"})['src']
   except:
-    print(f"Image link was not found for [{title}]")
+    print(f"Image link was not found for [{name}]")
 
   return Author(name, description, birthDate, deathDate, imgLink).asDict()
 
