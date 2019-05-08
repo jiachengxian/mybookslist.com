@@ -68,7 +68,7 @@ def parseGoodReadsPage(url):
   try:
     deathDate = bs.find("div",{"itemprop":"deathDate"}).text.strip()
   except:
-    print(f"Death tag was not found for [{name}]")
+    print(f"deathDate tag was not found for [{name}]")
 
   #ImageLink
   imgLink = ""
@@ -79,3 +79,10 @@ def parseGoodReadsPage(url):
 
   return Author(name, description, birthDate, deathDate, imgLink).asDict()
 
+def getGenres(url):
+  genresList = []
+  bs = getPage(url)
+  rightContainer = bs.find("div",{"class","rightContainer"})
+  for link in rightContainer.find_all('a', href=re.compile('^(/genres/)')):
+    genresList.append(link.text)
+  return genresList
