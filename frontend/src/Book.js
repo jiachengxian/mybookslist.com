@@ -73,7 +73,7 @@ class Book extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8000/get_book_json/The Yale Shakespeare Complete Works')
+        axios.get(`http://localhost:8000/get_book_json/${this.props.title}`)
         .then(response=>{
             //console.log(response.data);
             this.setState({book_data:response.data});
