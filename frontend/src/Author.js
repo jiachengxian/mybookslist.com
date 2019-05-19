@@ -43,7 +43,7 @@ class Author extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8000/get_author_json/Diana Peterfreund')
+        axios.get(`http://localhost:8000/get_author_json/${this.props.name}`)
         .then(response=>{
             //console.log(response.data);
             this.setState({author_data:response.data});
