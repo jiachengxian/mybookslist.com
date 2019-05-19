@@ -141,3 +141,10 @@ def processPublishInfo(str):
   if '\n' in publisher:
     publisher = publisher.split('\n')[0]
   return [publishDate, publisher]
+
+def getAuthorUrls(bookUrl):
+  bs = getPage(bookUrl)
+  authorUrlList = []
+  for authorUrl in bs.find_all("a",{"class":"authorName"}):
+    authorUrlList.append(authorUrl["href"])
+  return authorUrlList

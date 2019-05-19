@@ -2,6 +2,9 @@
     color: black !important;
     font-size: 12px;
 }
+.author_block{
+    text-align:center;
+}
 .author_container{
-    display:inline;
+    display:inline-block;
 }
