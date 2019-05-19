@@ -54,7 +54,7 @@ def parseGoodReadsPage(url):
       if description != None:
         description = description.text
       else:
-        description = bs.find("div",{"id":"description"}).find("span",{}).text
+        description = descriptionDiv.find("span",{}).text
   except:
     print(f"Unexpected error while scraping description for [{name}]")
   

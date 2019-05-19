@@ -71,3 +71,15 @@ print(popUrlFromCollection(foundUrlsCollection))
 def urlCollectionIsEmpty(foundUrlsCollection):
   res = foundUrlsCollection.find_one()
   return True if (res == None) else False
+
+
+def connectToAuthorCollection():
+  return connectToStaticDB()["Authors"]
+
+def insertIntoAuthorCollection(authorCollection,newEntry):
+  authorCollection.insert_one(newEntry)
+
+def authorAlreadyFound(authorCollection,authorName):
+  query = {"Name":authorName}
+  result = authorCollection.find_one(query)
+  return False if (result == None) else True
