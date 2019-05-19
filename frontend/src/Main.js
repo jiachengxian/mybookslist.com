@@ -14,7 +14,7 @@ class Main extends Component {
                 <div className="row my-4 content-row">
                     <div className="col dummy"></div>      
                     <div className="col-md-8 content">
-                        <Book></Book>
+                        <Book title="The Yale Shakespeare Complete Works"></Book>
                     </div>
                     <div className="col dummy"></div>      
                 </div>
