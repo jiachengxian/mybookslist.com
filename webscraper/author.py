@@ -3,12 +3,13 @@ from bs4 import BeautifulSoup
 import re
 
 class Author:
-  def __init__(self, name, description, birthDate, deathDate, imgLink):
+  def __init__(self, name, description, birthDate, deathDate, imgLink, genres):
     self.name = name
     self.description = description
     self.birthDate = birthDate
     self.deathDate = deathDate
     self.imgLink = imgLink
+    self.genres = genres
 
   def __str__(self):
     attributes = vars(self)
@@ -18,9 +19,10 @@ class Author:
     return {
       'Name':self.name,
       'Description':self.description,
-      'Birth Date':self.birthDate,
-      'Death Date':self.deathDate,
-      'Image_Link':self.imgLink
+      'Birth_Date':self.birthDate,
+      'Death_Date':self.deathDate,
+      'Image_Link':self.imgLink,
+      'Genres':self.genres
     }
  
 def getPage(url):
@@ -77,7 +79,14 @@ def parseGoodReadsPage(url):
   except:
     print(f"Image link was not found for [{name}]")
 
-  return Author(name, description, birthDate, deathDate, imgLink).asDict()
+  #Genres
+  genres = []
+  try:
+    genres =  getGenres(url)
+  except:
+    print(f"Genres were not found for [{name}]")
+
+  return Author(name, description, birthDate, deathDate, imgLink,genres).asDict()
 
 def getGenres(url):
   genresList = []
