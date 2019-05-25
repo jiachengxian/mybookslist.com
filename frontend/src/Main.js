@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./Main.css";
 import { Link, Route, Switch } from 'react-router-dom';
-import Book from "./Book"
-import Author from "./Author"
+import Home from "./home-page-component/Home";
+import Book from "./book-page-component/Book";
+import Author from "./author-page-component/Author";
 class Main extends Component {
     render() {
         return(
@@ -23,7 +24,7 @@ class Main extends Component {
                     <div className="col dummy"></div>      
                     <div className="col-md-8 content">
                         <Switch>
-                            <Route exact path="/"/>
+                            <Route exact path="/" component={Home}/>
                             <Route path="/book" render={ () => <Book name="Harry Potter and the Goblet of Fire"></Book>}/>
                             <Route path="/author" render={ () => <Author name="Diana Peterfreund"></Author>}/>
                         </Switch>
