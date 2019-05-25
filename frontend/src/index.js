@@ -1,9 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import {render} from 'react-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import Main from "./Main"
-import "./index.css";
+import Author from "./Author"
+import "./index.css"
 
-ReactDOM.render(
-    <Main/>,
+render(
+    <BrowserRouter>
+        <Route path="/" component={Main}/>
+    </BrowserRouter>,
     document.getElementById("root")
 );
