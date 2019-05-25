@@ -73,7 +73,7 @@ class Book extends Component{
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:8000/get_book_json/${this.props.title}`)
+        axios.get(`http://localhost:8000/get_book_json/${this.props.name}`)
         .then(response=>{
             //console.log(response.data);
             this.setState({book_data:response.data});
