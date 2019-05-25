@@ -18,17 +18,15 @@ class Main extends Component {
                     </div>
                 </div>
 
-                <Switch>
-                    <Route exact path="/"/>
-                    <Route path="/book" render={ () => <Book name="Harry Potter and the Goblet of Fire"></Book>}/>
-                    <Route path="/author" render={ () => <Author name="Diana Peterfreund"></Author>}/>
-                </Switch>
-
                 
                 <div className="row my-4 content-row">
                     <div className="col dummy"></div>      
                     <div className="col-md-8 content">
-                        
+                        <Switch>
+                            <Route exact path="/"/>
+                            <Route path="/book" render={ () => <Book name="Harry Potter and the Goblet of Fire"></Book>}/>
+                            <Route path="/author" render={ () => <Author name="Diana Peterfreund"></Author>}/>
+                        </Switch>
                     </div>
                     <div className="col dummy"></div>      
                 </div>
