@@ -7,7 +7,6 @@ class BookPreview extends Component{
         super(props);
         
         this.state = {
-            details: false,
             book_data: {}
         };
         this.authorsDiv = this.authorsDiv.bind(this);
@@ -52,7 +51,6 @@ class BookPreview extends Component{
     }
 
     render() {
-        //var DetailDiv = this.detailsDiv;
         var AuthorsDiv = this.authorsDiv;
         return(
             <div>
