@@ -9,9 +9,7 @@ class BookPreviewList extends Component{
         
         this.ListDiv = this.ListDiv.bind(this);
     }
-
-
-
+    
     ListDiv(){
        const list = [];
        this.props.book_list.forEach(element => {

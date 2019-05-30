@@ -60,7 +60,7 @@ class BookPreview extends Component{
                     </div>
                             
                     <div className="col" id="text">
-                            <a href="#"id="title">{this.state.book_data.Title}</a>
+                            <a href="/book"id="title">{this.state.book_data.Title}</a>
                             {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
                             <AuthorsDiv></AuthorsDiv>
                             {this.state.book_data.Series!="" &&
