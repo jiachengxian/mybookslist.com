@@ -1,0 +1,5 @@
+class BookData{
+  constructor(bookObj){
+    
+  }
+}
