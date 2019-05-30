@@ -8,16 +8,16 @@ class Main extends Component {
     render() {
         return(
             <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-12 header">
+                <nav className="navbar header row">
+                    
                         <h2>My Reading List</h2>
                         <ul>
                             <li className="header-link"><Link to="/">Home</Link></li>
                             <li className="header-link"><Link to="/book">Books</Link></li>
                             <li className="header-link"><Link to="/author">Authors</Link></li>
                         </ul>
-                    </div>
-                </div>
+                   
+                </nav>
 
                 
                 <div className="row my-4 content-row">
