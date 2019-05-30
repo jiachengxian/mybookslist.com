@@ -14,9 +14,7 @@ class BookPreviewList extends Component{
 
     ListDiv(){
        const list = [];
-       console.log(this.props.book_list);
        this.props.book_list.forEach(element => {
-          console.log(element);
           list.push(
             <div className="col">
               <BookPreview name={element}></BookPreview>
