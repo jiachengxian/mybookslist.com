@@ -3,6 +3,7 @@ import "./Home.css";
 import Book from "../book-page-component/Book"
 import axios from 'axios';
 import BookPreview from "../book-page-component/BookPreview";
+import BookPreviewList from "../book-page-component/BookPreviewList"
 import logo from './placeholder.gif'
 
 class Home extends Component {
@@ -30,35 +31,22 @@ class Home extends Component {
 
     render(props){
         var title = this.state.search;
-
+        var titles = ["The Last Hunt", "Through the Looking-Glass and What Alice Found There", "Harry Potter and the Prisoner of Azkaban", "Changes"];
         return(
             <div className="home-header">
-                <div className="row">
+                <div className="row my-5">
                     <img src={logo} alt="Smiley face" height="200px"/>
                 </div>
 
                 <div className="row">
                     <form className="form-inline search">
-                        <input className="form-control" onChange={this.setSearch}></input>
-                        <button className="btn-1">go</button>
+                        <input className="form-control m-2" onChange={this.setSearch}></input>
+                        <button className="btn searchbutton" type="submit">go</button>
                     </form>
                 </div>
 
                 <hr></hr>
-                <div className="row">
-                    <div className="col">
-                        <BookPreview name="The Last Hunt"></BookPreview>
-                    </div>
-                    <div className="col">
-                        <BookPreview name="Through the Looking-Glass and What Alice Found There"></BookPreview>
-                    </div>
-                    <div className="col">
-                        <BookPreview name="Harry Potter and the Prisoner of Azkaban"></BookPreview>
-                    </div>
-                    <div className="col">
-                        <BookPreview name="Changes"></BookPreview>
-                    </div>
-                </div>
+                    <BookPreviewList book_list={titles}></BookPreviewList>
                 <h1>{title}</h1>
             </div>
         )

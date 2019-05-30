@@ -5,3 +5,7 @@
 .search{
     float: center;
 }
+
+.searchButton{
+    float:right;
+}
