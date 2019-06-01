@@ -1,24 +1,33 @@
 import React, { Component } from "react";
-import "./Home.css";
+// import "./Home.css";
 import Book from "../book-page-component/Book"
 import axios from 'axios';
 import BookPreview from "../book-page-component/BookPreview";
 import BookPreviewList from "../book-page-component/BookPreviewList"
-import logo from './placeholder.gif'
+import "./Results.css"
+// import logo from './placeholder.gif'
 
-class Home extends Component {
+class Results extends Component {
     constructor(props){
         super(props);
         
         this.state = {
-            changed: 0,
-            search: ""
+          searchResults:[]
         };
         this.setSearch = this.setSearch.bind(this);
         this.changeQ = this.changeQ.bind(this);
  
     }
 
+    componentDidMount(){
+      axios.get(`http://localhost:8000/search/book/${this.props.query}`)
+      .then(response=>{
+          //console.log(response.data);
+          this.setState({searchResults:response.data});
+          console.log(this.state.searchResults);
+      })
+      .catch(console.error);
+  }
     setSearch(e) {
         this.setState({
             search: e.target.value
@@ -30,26 +39,25 @@ class Home extends Component {
     }
 
     render(props){
-        var title = this.state.search;
-        var titles = [{"Title":"Harry Potter and the Prisoner of Azkaban"},{"Title":"Harry Potter and the Chamber of Secrets"},{"Title":"Harry Potter and the Order of the Phoenix"},{"Title":"Harry Potter and the Goblet of Fire"},{"Title":"Harry Potter and the Sorcerer's Stone"},{"Title":"Harry Potter and the Half-Blood Prince"},{"Title":"Harry Potter and the Deathly Hallows"}];
+        
+        var titles = ["The Last Hunt", "Through the Looking-Glass and What Alice Found There", "Harry Potter and the Prisoner of Azkaban", "Changes"];
         return(
+            
             <div className="home-header">
-                <div className="row my-5">
-                    <img src={logo} alt="Smiley face" height="200px"/>
-                </div>
-
                 <div className="row">
-                    <form className="form-inline search" action={`/search/${this.state.search}`}>
+                  <h1>Search Results</h1>
+                </div>
+                <div className="row">
+                    <form className="form-inline search" o>
                         <input className="form-control m-2" onChange={this.setSearch}></input>
                         <button className="btn searchbutton" type="submit">go</button>
                     </form>
                 </div>
 
                 <hr></hr>
-                    <BookPreviewList book_list={titles}></BookPreviewList>
-                <h1>{title}</h1>
+                <BookPreviewList book_list={this.state.searchResults}></BookPreviewList>
             </div>
         )
     }
 }
-export default Home;
+export default Results;
