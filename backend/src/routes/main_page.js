@@ -23,4 +23,17 @@ module.exports = function handle_main_page_routes(router,db){
             })
         })
     });
+    router.route('/search/book/:search_query').get(function(req,res){
+        db.db(STATIC_DB_NAME).collection(BOOK_COLLECTION_NAME).find({"Title":{'$regex':req.params['search_query'], '$options': 'i'}}, {"Title":1})
+        .toArray()
+        .then((docs,err)=>{
+            if(err) res.writeHead(500, err.message);
+            else if(!docs.length) res.writeHead(404);
+            else{
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.write(JSON.stringify(docs.map(function(doc){return {'Title':doc.Title}})));
+            }
+            res.end();
+        })
+    });
 }
