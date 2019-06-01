@@ -23,13 +23,13 @@ class BookPreview extends Component{
                         if(i+1 === this.state.book_data.Author.length){
                             return(
                                 <div className="author_container">
-                                <a href="">{author}</a>
+                                <a href={`author/${author}`}>{author}</a>
                                 </div>  
                             );
                         }else{
                             return(
                                 <div className="author_container">
-                                    <a href="">{author}</a>
+                                    <a href={`author/${author}`}>{author}</a>
                                 ,&nbsp;</div>    
                             ); 
                         }
@@ -60,7 +60,7 @@ class BookPreview extends Component{
                     </div>
                             
                     <div className="col" id="text">
-                            <a href="/book"id="title">{this.state.book_data.Title}</a>
+                            <a href={`book/${this.state.book_data.Title}`} id="title">{this.state.book_data.Title}</a>
                             {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
                             <AuthorsDiv></AuthorsDiv>
                             {this.state.book_data.Series!="" &&
