@@ -36,4 +36,18 @@ module.exports = function handle_main_page_routes(router,db){
             res.end();
         })
     });
+
+    router.route('/search/author/:search_query').get(function(req,res){
+        db.db(STATIC_DB_NAME).collection(AUTHOR_COLLECTION_NAME).find({"Name":{'$regex':req.params['search_query'], '$options': 'i'}}, {"Name":1})
+        .toArray()
+        .then((docs,err)=>{
+            if(err) res.writeHead(500, err.message);
+            else if(!docs.length) res.writeHead(404);
+            else{
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.write(JSON.stringify(docs.map(function(doc){return {'Name':doc.Name}})));
+            }
+            res.end();
+        })
+    });
 }
