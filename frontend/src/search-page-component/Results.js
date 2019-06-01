@@ -19,6 +19,15 @@ class Results extends Component {
  
     }
 
+    componentDidMount(){
+      axios.get(`http://localhost:8000/search/book/${this.props.query}`)
+      .then(response=>{
+          //console.log(response.data);
+          this.setState({searchResults:response.data});
+          console.log(this.state.searchResults);
+      })
+      .catch(console.error);
+  }
     setSearch(e) {
         this.setState({
             search: e.target.value
@@ -46,7 +55,7 @@ class Results extends Component {
                 </div>
 
                 <hr></hr>
-                <BookPreviewList book_list={titles}></BookPreviewList>
+                <BookPreviewList book_list={this.state.searchResults}></BookPreviewList>
             </div>
         )
     }

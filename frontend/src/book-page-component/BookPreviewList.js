@@ -15,7 +15,7 @@ class BookPreviewList extends Component{
        this.props.book_list.forEach(element => {
           list.push(
             <div className="col">
-              <BookPreview name={element}></BookPreview>
+              <BookPreview name={element.Title}></BookPreview>
             </div>);
        });
        return(<div className="row">{list}</div>);

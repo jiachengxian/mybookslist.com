@@ -31,7 +31,7 @@ class Home extends Component {
 
     render(props){
         var title = this.state.search;
-        var titles = ["The Last Hunt", "Through the Looking-Glass and What Alice Found There", "Harry Potter and the Prisoner of Azkaban", "Changes"];
+        var titles = [{"Title":"Harry Potter and the Prisoner of Azkaban"},{"Title":"Harry Potter and the Chamber of Secrets"},{"Title":"Harry Potter and the Order of the Phoenix"},{"Title":"Harry Potter and the Goblet of Fire"},{"Title":"Harry Potter and the Sorcerer's Stone"},{"Title":"Harry Potter and the Half-Blood Prince"},{"Title":"Harry Potter and the Deathly Hallows"}];
         return(
             <div className="home-header">
                 <div className="row my-5">
