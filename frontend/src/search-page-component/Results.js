@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-// import "./Home.css";
-import Book from "../book-page-component/Book"
 import axios from 'axios';
-import BookPreview from "../book-page-component/BookPreview";
 import BookPreviewList from "../book-page-component/BookPreviewList"
+import GLOBALS from "../globals";
 import "./Results.css"
 // import logo from './placeholder.gif'
 
@@ -20,7 +18,7 @@ class Results extends Component {
     }
 
     componentDidMount(){
-      axios.get(`http://localhost:8000/search/book/${this.props.query}`)
+      axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.SEARCH_FOR_BOOKS_PATH}/${this.props.query}`)
       .then(response=>{
           //console.log(response.data);
           this.setState({searchResults:response.data});

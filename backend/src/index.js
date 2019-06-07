@@ -20,6 +20,6 @@ client.connect()
     app.listen(PORT);
     console.log(`Listening on port ${PORT}`);
     app.use('/',router);
-    require('./routes/main_page')(router,database);
+    require('./routes/routes.js')(router,database);
 })
 .catch(console.error);
