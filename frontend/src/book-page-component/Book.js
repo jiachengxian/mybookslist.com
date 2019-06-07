@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import GLOBALS from "../globals";
 import "./Book.css";
 
 class Book extends Component{
@@ -73,7 +74,7 @@ class Book extends Component{
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:8000/get_book_json/${this.props.name}`)
+        axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.GET_BOOK_DATA_PATH}/${this.props.name}`)
         .then(response=>{
             //console.log(response.data);
             this.setState({book_data:response.data});

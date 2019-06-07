@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import GLOBALS from "../globals";
 import "./Author.css";
 
 class Author extends Component{
@@ -43,7 +44,7 @@ class Author extends Component{
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:8000/get_author_json/${this.props.name}`)
+        axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.GET_AUTHOR_DATA_PATH}/${this.props.name}`)
         .then(response=>{
             //console.log(response.data);
             this.setState({author_data:response.data});

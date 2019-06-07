@@ -27,7 +27,7 @@ class Main extends Component {
                             <Route path="/book_landing_page" render={ () => <BookMainPage></BookMainPage>}/>
                             <Route path="/author_landing_page" render={ () => <AuthorMainPage></AuthorMainPage>}/>
                             <Route path={"/book/:name"} render={({match}) => <Book name={match.params.name}></Book>}/>
-                            <Route path={"/author/:name"} render={({match}) => <Author name={`${match.params.name}`}></Author>}/>
+                            <Route path={"/author/:name"} render={({match}) => <Author name={match.params.name}></Author>}/>
                             <Route path={"/search/:query"} render={({match}) => <Results query={match.params.query}></Results>}/>
                         </Switch>
                     </div>
