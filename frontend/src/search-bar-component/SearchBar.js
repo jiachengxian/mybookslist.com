@@ -83,10 +83,9 @@ class SearchBar extends Component {
           inputProps={inputProps}
           theme={{
             suggestionsContainerOpen:{
-              'position':'absolute',
-              'z-index':3,
-            }
-            ,
+              position:'absolute',
+              zIndex:3,
+            },
           }}
         />
         <button className="btn searchbutton" type="submit">go</button>
