@@ -1,4 +1,4 @@
 .suggestionContainer{
-    float:left;
+    display:inline-block;
     color:#FFFFFF;
 }

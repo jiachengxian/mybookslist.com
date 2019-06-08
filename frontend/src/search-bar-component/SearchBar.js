@@ -40,7 +40,7 @@ class SearchBar extends Component {
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    const maxNumBooksDisplayed = 5
+    const maxNumBooksDisplayed = 10;
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
     axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.SEARCH_FOR_BOOKS_PATH}/${inputValue}/${maxNumBooksDisplayed}`)
