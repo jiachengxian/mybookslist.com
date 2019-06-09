@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Main.css";
-import { Link, Route, Switch } from 'react-router-dom';
+import { NavLink,Link, Route, Switch } from 'react-router-dom';
 import Home from "./home-page-component/Home";
 import Book from "./book-page-component/Book";
 import BookMainPage from "./book-page-component/BookMainPage";
@@ -13,10 +13,10 @@ class Main extends Component {
             <div className="container-fluid">
                 <nav className="navbar header row"> 
                     <h2>My Reading List</h2>
-                    <ul>
-                        <li className="header-link"><Link to="/">Home</Link></li>
-                        <li className="header-link"><Link to="/book_landing_page">Books</Link></li>
-                        <li className="header-link"><Link to="/author_landing_page">Authors</Link></li>
+                    <ul className="nav-list">
+                        <li className="header-link"><NavLink className="app-link" to="/">Home</NavLink></li>
+                        <li className="header-link"><NavLink className="app-link" to="/book_landing_page">Books</NavLink></li>
+                        <li className="header-link"><NavLink className="app-link" to="/author_landing_page">Authors</NavLink></li>
                     </ul>
                 </nav>
                 <div className="row my-4 content-row">

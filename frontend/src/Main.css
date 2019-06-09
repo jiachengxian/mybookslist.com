@@ -8,7 +8,7 @@
     display:inline-block;
 }
 
-li a{
+.app-link{
     display: block;
     color: white;
     text-align: center;
@@ -16,13 +16,13 @@ li a{
     text-decoration: none;
 }
 
-ul {
+.nav-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #1F538E;
-  }
+}
 
 img{
     max-width: 100%;
