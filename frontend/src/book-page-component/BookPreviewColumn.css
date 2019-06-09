@@ -1,0 +1,16 @@
+.details-button{
+  color: black !important;
+  font-size: 12px;
+}
+
+.author_container{
+  display:inline-block;
+}
+
+#text{
+  float: right;
+  font-size: 10px;
+  color:black;
+}
+
+form { margin: 0 auto; }
