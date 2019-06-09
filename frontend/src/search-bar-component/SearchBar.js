@@ -85,6 +85,14 @@ class SearchBar extends Component {
             suggestionsContainerOpen:{
               position:'absolute',
               zIndex:3,
+              opacity:0.9,
+            },
+            suggestionsList:{
+              'padding-left':'0px',
+            },
+            suggestion:{
+              'background-color':'#1F538E',
+              'listStyleType': 'none',
             },
           }}
         />
