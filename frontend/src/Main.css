@@ -8,7 +8,7 @@
     display:inline-block;
 }
 
-li a{
+.app-link{
     display: block;
     color: white;
     text-align: center;
@@ -16,7 +16,7 @@ li a{
     text-decoration: none;
 }
 
-ul {
+#navlist {
     list-style-type: none;
     margin: 0;
     padding: 0;
