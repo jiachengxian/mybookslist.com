@@ -13,7 +13,7 @@ class Main extends Component {
             <div className="container-fluid">
                 <nav className="navbar header row"> 
                     <h2>My Reading List</h2>
-                    <ul id="nav-list">
+                    <ul className="nav-list">
                         <li className="header-link"><NavLink className="app-link" to="/">Home</NavLink></li>
                         <li className="header-link"><NavLink className="app-link" to="/book_landing_page">Books</NavLink></li>
                         <li className="header-link"><NavLink className="app-link" to="/author_landing_page">Authors</NavLink></li>

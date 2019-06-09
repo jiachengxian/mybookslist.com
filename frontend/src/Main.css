@@ -16,13 +16,13 @@
     text-decoration: none;
 }
 
-#navlist {
+.nav-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #1F538E;
-  }
+}
 
 img{
     max-width: 100%;
