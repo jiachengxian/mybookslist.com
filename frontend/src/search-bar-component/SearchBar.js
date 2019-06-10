@@ -4,6 +4,9 @@ import axios from 'axios';
 import GLOBALS from '../globals';
 import "./SearchBar.css";
 
+const LIMIT_BOOKS_DISPLAYED = 10;
+const MAX_CHARACTER_LIMIT = 50;
+
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
@@ -40,14 +43,19 @@ class SearchBar extends Component {
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    const maxNumBooksDisplayed = 10;
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-    axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.SEARCH_FOR_BOOKS_PATH}/${inputValue}/${maxNumBooksDisplayed}`)
+    axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.SEARCH_FOR_BOOKS_PATH}/${inputValue}/${LIMIT_BOOKS_DISPLAYED}`)
       .then(response=>{
         var suggestions = inputLength === 0 ? [] : response.data.filter(book =>
           book.Title.toLowerCase().includes(inputValue));
-        this.setState({
+        suggestions = suggestions.map(function(suggestion){
+          if (suggestion.Title.length > MAX_CHARACTER_LIMIT){
+            suggestion.Title = suggestion.Title.substring(0,MAX_CHARACTER_LIMIT) + '...';
+          }
+          return suggestion;
+        })
+          this.setState({
             suggestions: suggestions
         });
       })
@@ -85,6 +93,14 @@ class SearchBar extends Component {
             suggestionsContainerOpen:{
               position:'absolute',
               zIndex:3,
+              opacity:0.9,
+            },
+            suggestionsList:{
+              'paddingLeft':'0px',
+            },
+            suggestion:{
+              'backgroundColor':'#1F538E',
+              'listStyleType': 'none',
             },
           }}
         />
