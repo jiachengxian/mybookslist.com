@@ -3,6 +3,7 @@ import axios from 'axios';
 import BookPreviewList from "../book-page-component/BookPreviewList"
 import GLOBALS from "../globals";
 import "./Results.css"
+import BookResultList from "../book-page-component/BookResultList";
 // import logo from './placeholder.gif'
 
 class Results extends Component {
@@ -53,7 +54,7 @@ class Results extends Component {
                 </div>
 
                 <hr></hr>
-                <BookPreviewList book_list={this.state.searchResults}></BookPreviewList>
+                <BookResultList book_list={this.state.searchResults}></BookResultList>
             </div>
         )
     }
