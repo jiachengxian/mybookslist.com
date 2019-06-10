@@ -56,7 +56,6 @@ class BookResultRow extends Component{
         return(
             <div className="container">
                 <div className="row" id="basic-info-row">
-                    <div className="col" id="pic">
                     <div className="col-md-4">
                             <img class="thumbnail" src={this.state.book_data.Image_Link}/>
                     </div>
