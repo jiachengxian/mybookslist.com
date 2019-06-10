@@ -54,13 +54,14 @@ class BookResultRow extends Component{
     render() {
         var AuthorsDiv = this.authorsDiv;
         return(
-            <div>
+            <div className="container">
                 <div className="row" id="basic-info-row">
                     <div className="col" id="pic">
+                    <div className="col-md-4">
                             <img class="thumbnail" src={this.state.book_data.Image_Link}/>
                     </div>
                             
-                    <div className="col" id="text">
+                    <div className="col-md-8">
                             <a href={`/book/${this.state.book_data.Title}`} id="title">{this.state.book_data.Title}</a>
                             <AuthorsDiv></AuthorsDiv>
                             {this.state.book_data.Series!=="" &&
@@ -69,8 +70,9 @@ class BookResultRow extends Component{
                             </div>}
                     </div>
 
-                    <hr></hr>
+                    
                 </div>
+                <hr></hr>
             </div>
         );
     }
