@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 import GLOBALS from "../globals";
 import "./BookPreview.css";
-
-class BookPreview extends Component{
+import "./BookResultRow.css";
+class BookResultRow extends Component{
     constructor(props){
         super(props);
         
@@ -54,24 +54,26 @@ class BookPreview extends Component{
     render() {
         var AuthorsDiv = this.authorsDiv;
         return(
-            <div>
+            <div className="container">
                 <div className="row" id="basic-info-row">
-                    <div className="col" id="pic">
-                            <img className="thumbnail" src={this.state.book_data.Image_Link}/>
+                    <div className="col-md-4">
+                            <img class="thumbnail" src={this.state.book_data.Image_Link}/>
                     </div>
                             
-                    <div className="col" id="text">
+                    <div className="col-md-8">
                             <a href={`/book/${this.state.book_data.Title}`} id="title">{this.state.book_data.Title}</a>
-                            {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
                             <AuthorsDiv></AuthorsDiv>
                             {this.state.book_data.Series!=="" &&
                             <div id="series">Series: 
                                 <a id="series-link" href=""> {this.state.book_data.Series}</a>
                             </div>}
                     </div>
+
+                    
                 </div>
+                <hr></hr>
             </div>
         );
     }
 }
-export default BookPreview;
+export default BookResultRow;
