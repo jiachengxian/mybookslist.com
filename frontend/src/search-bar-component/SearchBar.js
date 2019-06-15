@@ -22,10 +22,6 @@ const renderSuggestion = suggestion => (
   </NavLink>
 );
 
-const onClickSuggestion = () => {
-
-}
-
 class SearchBar extends Component {
   constructor() {
     super();
@@ -54,8 +50,7 @@ class SearchBar extends Component {
     const inputLength = inputValue.length;
     axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.SEARCH_FOR_BOOKS_PATH}/${inputValue}/${LIMIT_BOOKS_DISPLAYED}`)
       .then(response=>{
-        var suggestions = inputLength === 0 ? [] : response.data.filter(book =>
-          book.Title.toLowerCase().includes(inputValue));
+        var suggestions = inputLength === 0 ? [] : response.data;
         suggestions = suggestions.map(function(suggestion){
           if (suggestion.Title.length > MAX_CHARACTER_LIMIT){
             suggestion.Title = suggestion.Title.substring(0,MAX_CHARACTER_LIMIT) + '...';
