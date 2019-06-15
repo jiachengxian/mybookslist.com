@@ -4,6 +4,7 @@ import BookPreviewList from "../book-page-component/BookPreviewList"
 import GLOBALS from "../globals";
 import "./Results.css"
 import BookResultList from "../book-page-component/BookResultList";
+import SearchBar from "../search-bar-component/SearchBar";
 // import logo from './placeholder.gif'
 
 class Results extends Component {
@@ -47,10 +48,7 @@ class Results extends Component {
                   <h1>Search Results</h1>
                 </div>
                 <div className="row">
-                    <form className="form-inline search" o>
-                        <input className="form-control m-2" onChange={this.setSearch}></input>
-                        <button className="btn searchbutton" type="submit">go</button>
-                    </form>
+                    <SearchBar></SearchBar>
                 </div>
 
                 <hr></hr>
