@@ -1,5 +1,6 @@
 import Autosuggest from 'react-autosuggest';
 import React, { Component } from "react";
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import GLOBALS from '../globals';
 import "./SearchBar.css";
@@ -14,10 +15,16 @@ const getSuggestionValue = suggestion => suggestion.Title;
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <span className="suggestionContainer">
-    {suggestion.Title}
-  </span>
+  <NavLink className="suggestionContainer" to={`/book/${suggestion.Title}`}>
+    <span className="suggestionTextContainer">
+      {suggestion.Title}
+    </span>
+  </NavLink>
 );
+
+const onClickSuggestion = () => {
+
+}
 
 class SearchBar extends Component {
   constructor() {
@@ -93,7 +100,7 @@ class SearchBar extends Component {
             suggestionsContainerOpen:{
               position:'absolute',
               zIndex:3,
-              opacity:0.9,
+              opacity:0.95,
             },
             suggestionsList:{
               'paddingLeft':'0px',

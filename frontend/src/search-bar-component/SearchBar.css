@@ -1,6 +1,9 @@
 .suggestionContainer{
     display:inline-block;
-    color:#FFFFFF;
+    width:100%;
+}
+.suggestionTextContainer{
+    color:#ffffff;
     margin-left:10px;
     margin-right:10px;
 }
