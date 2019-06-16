@@ -28,7 +28,7 @@ module.exports = function handle_main_page_routes(router,db){
     router.route('/search/book/:search_query/:limitValue?').get(function(req,res){
         var limitValue = req.params['limitValue'];
         var limit = (limitValue!==null && !isNaN(parseInt(limitValue))) ? parseInt(limitValue) : 0;
-        db.db(STATIC_DB_NAME).collection(BOOK_COLLECTION_NAME).find({"Title":{'$regex':req.params['search_query'], '$options': 'i'}}, {"Title":1})
+        db.db(STATIC_DB_NAME).collection(BOOK_COLLECTION_NAME).find({"Title":{'$regex':req.params['search_query'], '$options': 'i'}})
         .limit(limit)
         .toArray()
         .then((docs,err)=>{
