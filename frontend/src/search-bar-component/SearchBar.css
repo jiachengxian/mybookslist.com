@@ -1,9 +1,37 @@
 .suggestionContainer{
     display:inline-block;
     width:100%;
+    margin-bottom: 5px;
 }
-.suggestionTextContainer{
+.suggestionTitleContainer{
     color:#ffffff;
     margin-left:10px;
     margin-right:10px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: normal;
+    line-height:15px;
+}
+.suggestionAuthorContainer{
+    color:#c4c4c4;
+    margin-left:10px;
+    margin-right:10px;
+    font-size: smaller;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height:15px;
+}
+.centerCroppedImg {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    float: left;
+    height: 38px;
+    width: 58px;
+    margin-left: 3px;
+    margin-right: 5px;
 }
