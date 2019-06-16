@@ -36,7 +36,7 @@ module.exports = function handle_main_page_routes(router,db){
             else if(!docs.length) res.writeHead(404);
             else{
                 res.writeHead(200, {'Content-Type': 'application/json'});
-                res.write(JSON.stringify(docs.map(function(doc){return {'Title':doc.Title}})));
+                res.write(JSON.stringify(docs.map(function(doc){return {'Title':doc.Title,'Author':doc.Author,'Image_Link':doc.Image_Link}})));
             }
             res.end();
         })

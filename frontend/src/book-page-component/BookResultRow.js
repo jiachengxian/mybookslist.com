@@ -19,7 +19,6 @@ class BookResultRow extends Component{
         if(this.state.book_data != null && this.state.book_data.Author != null){
             return(
                 <div className="author_block">by:&nbsp;
-                    {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
                     {this.state.book_data.Author.map((author,i) => {
                         if(i+1 === this.state.book_data.Author.length){
                             return(

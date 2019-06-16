@@ -40,7 +40,6 @@ class Results extends Component {
 
     render(props){
         
-        var titles = ["The Last Hunt", "Through the Looking-Glass and What Alice Found There", "Harry Potter and the Prisoner of Azkaban", "Changes"];
         return(
             
             <div className="home-header">
