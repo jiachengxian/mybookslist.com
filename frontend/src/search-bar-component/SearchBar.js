@@ -15,17 +15,31 @@ const getSuggestionValue = suggestion => suggestion.Title;
 
 // Use your imagination to render suggestions.
 function renderSuggestion (suggestion, {query, isHighlighted}) {
+  if(isHighlighted){
+    return (
+      <NavLink className="suggestionContainer highlightedSuggestionContainer" to={`/book/${suggestion.Title}`}>
+        <img className="centerCroppedImg expandedThumbnail" src={suggestion.Image_Link}/>
+        <div className="suggestionTitleContainer">
+          {suggestion.Title}
+        </div>
+        <div className="suggestionAuthorContainer">
+          {suggestion.Author}
+        </div>
+      </NavLink>
+    )
+  }else{
   return (
-    <NavLink className="suggestionContainer" to={`/book/${suggestion.Title}`}>
-      <img className="centerCroppedImg" src={suggestion.Image_Link}/>
-      <div className="suggestionTitleContainer">
-        {suggestion.Title}
-      </div>
-      <div className="suggestionAuthorContainer">
-        {suggestion.Author}
-      </div>
-    </NavLink>
-  )
+      <NavLink className="suggestionContainer" to={`/book/${suggestion.Title}`}>
+        <img className="centerCroppedImg unexpandedThumbnail" src={suggestion.Image_Link}/>
+        <div className="suggestionTitleContainer">
+          {suggestion.Title}
+        </div>
+        <div className="suggestionAuthorContainer">
+          {suggestion.Author}
+        </div>
+      </NavLink>
+    )
+  }
 }
 
 class SearchBar extends Component {
@@ -102,7 +116,7 @@ class SearchBar extends Component {
             suggestionsContainerOpen:{
               position:'absolute',
               zIndex:3,
-              opacity:0.95,
+              opacity:0.9,
             },
             suggestionsList:{
               'paddingLeft':'0px',

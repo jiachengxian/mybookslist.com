@@ -27,11 +27,24 @@
     line-height:15px;
 }
 .centerCroppedImg {
-    object-fit: none; /* Do not scale the image */
+    object-fit: cover;
     object-position: center; /* Center the image within the element */
     float: left;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.unexpandedThumbnail{
     height: 38px;
     width: 58px;
-    margin-left: 3px;
-    margin-right: 5px;
+}
+
+.expandedThumbnail{
+    height: 90px;
+    width: 58px;
+}
+
+.highlightedSuggestionContainer{
+    background-color:#102c49;
 }
