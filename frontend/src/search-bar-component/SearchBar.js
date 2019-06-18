@@ -6,7 +6,8 @@ import GLOBALS from '../globals';
 import "./SearchBar.css";
 
 const LIMIT_BOOKS_DISPLAYED = 10;
-const MAX_CHARACTER_LIMIT = 35;
+const MAX_TITLE_CHARACTER_LIMIT = 35;
+const MAX_AUTHOR_CHARACTER_LIMIT = 40;
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
@@ -72,10 +73,13 @@ class SearchBar extends Component {
       .then(response=>{
         var suggestions = inputLength === 0 ? [] : response.data;
         suggestions = suggestions.map(function(suggestion){
-          if (suggestion.Title.length > MAX_CHARACTER_LIMIT){
-            suggestion.Title = suggestion.Title.substring(0,MAX_CHARACTER_LIMIT) + '...';
+          if (suggestion.Title.length > MAX_TITLE_CHARACTER_LIMIT){
+            suggestion.Title = suggestion.Title.substring(0,MAX_TITLE_CHARACTER_LIMIT) + '...';
           }
           suggestion.Author = 'by '+ suggestion.Author.join(', ');
+          if (suggestion.Author.length > MAX_AUTHOR_CHARACTER_LIMIT){
+            suggestion.Author = suggestion.Author.substring(0,MAX_AUTHOR_CHARACTER_LIMIT) + '...';
+          }
           return suggestion;
         })
           this.setState({
