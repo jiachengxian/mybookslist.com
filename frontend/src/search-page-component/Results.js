@@ -5,6 +5,7 @@ import GLOBALS from "../globals";
 import "./Results.css"
 import BookResultList from "../book-page-component/BookResultList";
 import SearchBar from "../search-bar-component/SearchBar";
+import BookResultPage from "../book-page-component/BookResultPage";
 // import logo from './placeholder.gif'
 
 class Results extends Component {
@@ -37,9 +38,7 @@ class Results extends Component {
     }
 
     render(props){
-        
         return(
-            
             <div className="home-header">
                 <div className="row">
                   <h1>Search Results</h1>
@@ -49,7 +48,7 @@ class Results extends Component {
                 </div>
 
                 <hr></hr>
-                <BookResultList book_list={this.state.searchResults}></BookResultList>
+                <BookResultPage book_list={this.state.searchResults}></BookResultPage>
             </div>
         )
     }
