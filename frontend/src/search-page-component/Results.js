@@ -22,9 +22,7 @@ class Results extends Component {
     componentDidMount(){
       axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.SEARCH_FOR_BOOKS_PATH}/${this.props.query}`)
       .then(response=>{
-          //console.log(response.data);
           this.setState({searchResults:response.data});
-          console.log(this.state.searchResults);
       })
       .catch(console.error);
   }
