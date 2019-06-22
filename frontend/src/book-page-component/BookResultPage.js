@@ -5,9 +5,7 @@ class BookResultPage extends Component{
         super(props);
         this.state = {
           books :[],
-          pages :[],
-          pageLength : 25,
-          page : 0
+          pageLength : 25
         };
         this.pageBinder = this.pageBinder.bind(this);
     }
