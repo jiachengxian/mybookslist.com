@@ -54,13 +54,12 @@ class Author extends Component{
 
     render() {
         var DetailDiv = this.detailsDiv;
-        var AuthorsDiv = this.authorsDiv;
         return(
             <div>
                 <div className="row" id="basic-info-row">
                     <div className="col">
                         <div id="pic">
-                            <img src={this.state.author_data.Image_Link}/>
+                            <img src={this.state.author_data.Image_Link} alt={this.state.author_data.Name}/>
                         </div>
                     </div>
                             

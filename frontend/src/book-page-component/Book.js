@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import GLOBALS from "../globals";
+import AuthorsOfBookList from "./AuthorsOfBookList";
 import "./Book.css";
 
 class Book extends Component{
@@ -13,7 +14,6 @@ class Book extends Component{
         };
         this.showDetails = this.showDetails.bind(this);
         this.detailsDiv = this.detailsDiv.bind(this);
-        this.authorsDiv = this.authorsDiv.bind(this);
     }
 
     showDetails(e) {
@@ -46,33 +46,6 @@ class Book extends Component{
         }
     }
 
-    authorsDiv(){
-        if(this.state.book_data != null && this.state.book_data.Author != null){
-            return(
-                <div className="author_block">by:&nbsp;
-                    {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
-                    {this.state.book_data.Author.map((author,i) => {
-                        if(i+1 === this.state.book_data.Author.length){
-                            return(
-                                <div className="author_container">
-                                <a href="">{author}</a>
-                                </div>  
-                            );
-                        }else{
-                            return(
-                                <div className="author_container">
-                                    <a href="">{author}</a>
-                                ,&nbsp;</div>    
-                            ); 
-                        }
-                    })}
-                </div>
-            );
-        }else{
-            return(null)
-        }
-    }
-
     componentDidMount(){
         axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.GET_BOOK_DATA_PATH}/${this.props.name}`)
         .then(response=>{
@@ -84,22 +57,21 @@ class Book extends Component{
 
     render() {
         var DetailDiv = this.detailsDiv;
-        var AuthorsDiv = this.authorsDiv;
         return(
             <div>
                 <div className="row" id="basic-info-row">
                     <div className="col">
                         <div id="pic">
-                            <img src={this.state.book_data.Image_Link}/>
+                            <img alt={this.state.book_data.Title} src={this.state.book_data.Image_Link}/>
                         </div>
                     </div>
                             
                     <div className="col">
                         <div id="text">
                             <h1 id="title">{this.state.book_data.Title}</h1>
-                            {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
-                            <AuthorsDiv></AuthorsDiv>
+                            <AuthorsOfBookList book_data={this.state.book_data}></AuthorsOfBookList>
                             {this.state.book_data.Series!="" &&
+
                             <div id="series">Series: 
                                 <a id="series-link" href=""> {this.state.book_data.Series}</a>
                             </div>}

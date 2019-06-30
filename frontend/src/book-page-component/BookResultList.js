@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios';
 import "./BookPreview.css";
-import BookPreview from "./BookPreview.js";
 import BookResultRow from "./BookResultRow";
 
 class BookResultList extends Component{

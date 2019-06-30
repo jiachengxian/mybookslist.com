@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios';
 import "./BookPreview.css";
 import BookPreview from "./BookPreview.js";
 
@@ -14,8 +13,8 @@ class BookPreviewList extends Component{
        const list = [];
        this.props.book_list.forEach(element => {
           list.push(
-            <div className="col">
-              <BookPreview name={element.Title}></BookPreview>
+            <div key={element.Title}  className="col">
+              <BookPreview key={element.Title} name={element.Title}></BookPreview>
             </div>);
        });
        return(<div className="row">{list}</div>);

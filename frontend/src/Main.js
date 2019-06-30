@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Main.css";
-import { NavLink,Link, Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import Home from "./home-page-component/Home";
 import Book from "./book-page-component/Book";
 import BookMainPage from "./book-page-component/BookMainPage";
