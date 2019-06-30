@@ -19,7 +19,7 @@ class BookPreview extends Component{
         if(this.state.book_data != null && this.state.book_data.Author != null){
             return(
                 <div className="author_block">by:&nbsp;
-                    {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
+
                     {this.state.book_data.Author.map((author,i) => {
                         if(i+1 === this.state.book_data.Author.length){
                             return(
@@ -45,7 +45,6 @@ class BookPreview extends Component{
     componentDidMount(){
         axios.get(`${GLOBALS.BASE_URL}/${GLOBALS.GET_BOOK_DATA_PATH}/${this.props.name}`)
         .then(response=>{
-            //console.log(response.data);
             this.setState({book_data:response.data});
         })
         .catch(console.error);
