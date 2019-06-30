@@ -19,8 +19,8 @@ function renderSuggestion (suggestion, {query, isHighlighted}) {
   if(isHighlighted){
     return (
       <NavLink className="suggestionContainer highlightedSuggestionContainer" to={`/book/${suggestion.Title}`}>
-        <img className="centerCroppedImg expandedThumbnail" src={suggestion.Image_Link}/>
-        <div className="suggestionTitleContainer">
+        <img className="centerCroppedImg expandedThumbnail" src={suggestion.Image_Link} alt={suggestion.Title}/>
+        <div className="suggestionTitleContainer highlightedSuggestionTitleContainer">
           {suggestion.Title}
         </div>
         <div className="suggestionAuthorContainer">
@@ -31,7 +31,7 @@ function renderSuggestion (suggestion, {query, isHighlighted}) {
   }else{
   return (
       <NavLink className="suggestionContainer" to={`/book/${suggestion.Title}`}>
-        <img className="centerCroppedImg unexpandedThumbnail" src={suggestion.Image_Link}/>
+        <img className="centerCroppedImg unexpandedThumbnail" src={suggestion.Image_Link} alt={suggestion.Title}/>
         <div className="suggestionTitleContainer">
           {suggestion.Title}
         </div>
