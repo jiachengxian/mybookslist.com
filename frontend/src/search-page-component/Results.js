@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import BookPreviewList from "../book-page-component/BookPreviewList"
 import GLOBALS from "../globals";
 import "./Results.css"
 import BookResultList from "../book-page-component/BookResultList";

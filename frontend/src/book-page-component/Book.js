@@ -62,7 +62,7 @@ class Book extends Component{
                 <div className="row" id="basic-info-row">
                     <div className="col">
                         <div id="pic">
-                            <img src={this.state.book_data.Image_Link}/>
+                            <img alt={this.state.book_data.Title} src={this.state.book_data.Image_Link}/>
                         </div>
                     </div>
                             
@@ -71,6 +71,7 @@ class Book extends Component{
                             <h1 id="title">{this.state.book_data.Title}</h1>
                             <AuthorsOfBookList book_data={this.state.book_data}></AuthorsOfBookList>
                             {this.state.book_data.Series!="" &&
+
                             <div id="series">Series: 
                                 <a id="series-link" href=""> {this.state.book_data.Series}</a>
                             </div>}

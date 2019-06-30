@@ -26,7 +26,7 @@ class BookPreview extends Component{
             <div>
                 <div className="row" id="basic-info-row">
                     <div className="col" id="pic">
-                            <img className="thumbnail" src={this.state.book_data.Image_Link}/>
+                            <img className="thumbnail" alt={this.state.book_data.Title} src={this.state.book_data.Image_Link}/>
                     </div>
                             
                     <div className="col" id="text">
