@@ -48,3 +48,11 @@
 .highlightedSuggestionContainer{
     background-color:#102c49;
 }
+
+.highlightedSuggestionTitleContainer{
+    font-weight: bold;
+}
+
+a:link{
+    text-decoration: none;
+}
