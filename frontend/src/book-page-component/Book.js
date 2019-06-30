@@ -97,7 +97,6 @@ class Book extends Component{
                     <div className="col">
                         <div id="text">
                             <h1 id="title">{this.state.book_data.Title}</h1>
-                            {/*<a href="author.html">{this.state.book_data.Author}</a>*/}
                             <AuthorsDiv></AuthorsDiv>
                             {this.state.book_data.Series!=="" &&
                             <div id="series">Series: 
